@@ -1,0 +1,32 @@
+#Basic
+numpy
+
+#Data
+roboflow
+
+#ML
+ultralytics==8.0.196
+ipykernel
+ipython
+
+# Logging
+comet_ml
+
+# Image processing
+opencv-python
+
+#api
+uvicorn
+fastapi
+
+
+python-multipart
+
+ipdb
+av
+streamlit
+streamlit_webrtc
+
+
+gym==0.22.0
+pygame

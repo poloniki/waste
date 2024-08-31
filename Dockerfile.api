@@ -1,0 +1,16 @@
+FROM ultralytics/ultralytics:latest
+RUN apt-get install \
+  'ffmpeg'\
+  'libsm6'\
+  'libxext6'  -y
+COPY Makefile Makefile
+COPY requirements.txt requirements.txt
+COPY setup.py setup.py
+RUN make install
+COPY waste waste/
+
+# Set a default value for the workers environment variable
+ENV UVICORN_WORKERS=16
+ENV PORT = 8000
+
+CMD ["sh", "-c", "uvicorn waste.api.fast:app --host 0.0.0.0 --port ${PORT} --workers ${UVICORN_WORKERS}"]
