@@ -6,7 +6,7 @@ from waste.params import *
 
 
 def load_data():
-    rf = Roboflow(api_key=ROBOFLOW_API_KEY)
-    project = rf.workspace("augmented-startups").project("playing-cards-ow27d")
-    project.version(2).download("yolov8", location=LOCAL_DATA_PATH)
-    logging.info("✅ Succesufully downloaded dataset from the roboflow")
+    rf = Roboflow(api_key="NtHDWWC0JhDMlxNNhpDb")
+    project = rf.workspace("tom-rowland-03ams").project("taco-wikc7")
+    version = project.version(3)
+    dataset = version.download("yolov8-obb", location=LOCAL_DATA_PATH)
