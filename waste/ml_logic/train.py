@@ -16,7 +16,7 @@ def train_model():
         weights = load_best_weights()
     except Exception as error:
         logging.warning(f"❌ Could not load weights: {error}")
-        weights = os.path.join(WEIGHTS_PATH, "yolov8n.pt")
+        weights = os.path.join(WEIGHTS_PATH, "yolov9t.pt")
 
     model = YOLO(weights)
 
@@ -26,7 +26,6 @@ def train_model():
         imgsz=IMG_SIZE,
         patience=20,
         save_dir=RUNS_PATH,
-        plots=True,
     )
 
     update_production_model()

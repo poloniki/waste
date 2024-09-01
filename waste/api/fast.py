@@ -5,6 +5,7 @@ import numpy as np
 from ultralytics import YOLO
 from waste.ml_logic.model import load_best_weights
 import logging
+from waste.params import *
 
 logging.basicConfig(level=logging.INFO)
 
@@ -38,8 +39,9 @@ async def receive_image(img: UploadFile = File(...)):
 
     prediction = model(
         cv2_img,
-        imgsz=960,
-        conf=0.8,
+        device="cuda:0",
+        imgsz=IMG_SIZE,
+        conf=0.5,
         vid_stride=5,
         augment=True,
         stream_buffer=True,
