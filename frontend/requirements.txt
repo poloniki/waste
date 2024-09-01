@@ -1,9 +1,9 @@
+distutils
 pillow-heif
 Pillow
 numpy==1.21.0
 # img
 pillow
-
 streamlit_webrtc
 requests
 python-dotenv
