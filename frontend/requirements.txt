@@ -1,4 +1,4 @@
-distutils
+setuptools
 pillow-heif
 Pillow
 numpy==1.21.0
