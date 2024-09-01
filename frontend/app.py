@@ -64,7 +64,7 @@ def video_frame_callback(frame):
     bytes_data = encoded_image.tobytes()
 
     res = requests.post(
-        # url="http://34.116.237.23:8000/upload_image",
+        url="http://34.116.237.23:8000/upload_image",
         # url=" http://127.0.0.1:8080/upload_image",
         files={"img": bytes_data},
     ).json()["boundsboxes"]
