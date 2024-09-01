@@ -1,11 +1,2 @@
-setuptools==68.0.0
-pillow-heif
-Pillow
-numpy==1.21.0
-# img
-pillow
-streamlit_webrtc
-requests
-python-dotenv
-
-opencv-python-headless==4.6.0.66
+streamlit==0.52.1
+opencv-python==4.1.2.30
