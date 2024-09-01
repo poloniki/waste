@@ -1,4 +1,4 @@
-setuptools
+setuptools==68.0.0
 pillow-heif
 Pillow
 numpy==1.21.0
