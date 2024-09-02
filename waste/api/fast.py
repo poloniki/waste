@@ -36,7 +36,7 @@ async def receive_image(img: UploadFile = File(...)):
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
     bound_boxes = []
-
+    # We need to adjust stride
     prediction = model(
         cv2_img,
         device="cuda:0",
