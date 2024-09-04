@@ -37,7 +37,6 @@ def video_frame_callback(frame):
     bound_boxes = []
     prediction = model(
         img,
-        device="cuda:0",
         imgsz=640,
         conf=0.1,
         vid_stride=10,
@@ -56,9 +55,7 @@ def video_frame_callback(frame):
         }
         bound_boxes.append(dict)
 
-    created_image = create_image(
-        img, bound_boxes
-    )  # Assuming create_image is defined somewhere
+    created_image = create_image(img, bound_boxes)
 
     return av.VideoFrame.from_ndarray(created_image, format=format)
 
