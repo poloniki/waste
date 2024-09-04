@@ -21,11 +21,14 @@ def video_frame_callback(frame):
     format = "bgr24"
     img = frame.to_ndarray(format=format)
 
-    _, encoded_image = cv2.imencode(".jpg", img, [cv2.IMWRITE_JPEG_QUALITY, 45])
+    _, encoded_image = cv2.imencode(
+        ".jpg",
+        img,
+    )
     bytes_data = encoded_image.tobytes()
 
     res = requests.post(
-        url="http://34.118.100.170:8000/upload_image",
+        url="http://localhost:8000/upload_image",
         files={"img": bytes_data},
     ).json()["boundsboxes"]
 

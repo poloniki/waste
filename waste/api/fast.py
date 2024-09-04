@@ -62,39 +62,3 @@ async def receive_image(img: UploadFile = File(...)):
         bound_boxes.append(dict)
 
     return {"boundsboxes": bound_boxes}
-
-
-@app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
-    await websocket.accept()
-    model = app.state.model
-
-    try:
-        while True:
-            data = await websocket.receive_bytes()
-
-            # Decode the frame
-            nparr = np.frombuffer(data, np.uint8)
-            frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
-            # Predict
-            prediction = model(frame, device="cuda:0", imgsz=IMG_SIZE, conf=0.1)
-
-            bound_boxes = []
-            for box in prediction[0].boxes:
-                card = box.cls.tolist()[0]
-                card_name = prediction[0].names[card]
-                confidence = round(box.conf[0].item(), 2)
-                bound_boxes.append(
-                    {
-                        "Object type": card_name,
-                        "Coordinates": box.xyxy.tolist()[0],
-                        "Probability": confidence,
-                    }
-                )
-
-            await websocket.send_json({"boundsboxes": bound_boxes})
-
-    except Exception as e:
-        print(f"Error: {e}")
-        await websocket.close()
