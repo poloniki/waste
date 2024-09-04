@@ -5,7 +5,7 @@ __pycache__/
 *$py.class
 .env.yaml
 .streamlit/
-*.pt
+
 # C extensions
 *.so
 runs/
