@@ -6,7 +6,7 @@ from image_prediction import create_image
 
 
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration
 import av
 
 RTC_CONFIGURATION = RTCConfiguration(
@@ -24,6 +24,8 @@ def video_frame_callback(frame):
 
     res = requests.post(
         url="http://34.118.100.170:8000/upload_image",
+        # url=" http://127.0.0.1:8000/upload_image",
+        # url="http://65.108.32.135:8000/upload_image",
         files={"img": bytes_data},
     ).json()["boundsboxes"]
 
@@ -36,6 +38,4 @@ webrtc_streamer(
     key="example",
     video_frame_callback=video_frame_callback,
     rtc_configuration=RTC_CONFIGURATION,
-    media_stream_constraints={"video": True, "audio": False},
-    mode=WebRtcMode.RECVONLY,
 )
