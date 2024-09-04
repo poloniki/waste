@@ -1,17 +1,19 @@
 import cv2
 import requests
-
-
 from image_prediction import create_image
-
-
 import streamlit as st
 from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 import av
+import os
+from twilio.rest import Client
 
-RTC_CONFIGURATION = RTCConfiguration(
-    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
-)
+account_sid = st.secrets["twilio"]["account_sid"]
+auth_token = st.secrets["twilio"]["auth_token"]
+client = Client(account_sid, auth_token)
+
+token = client.tokens.create()
+
+RTC_CONFIGURATION = RTCConfiguration({"iceServers": token.ice_servers})
 
 
 def video_frame_callback(frame):
