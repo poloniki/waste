@@ -4,6 +4,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .env.yaml
+.streamlit/
 *.pt
 # C extensions
 *.so
