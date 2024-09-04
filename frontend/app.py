@@ -23,15 +23,17 @@ def video_frame_callback(frame):
 
     _, encoded_image = cv2.imencode(".jpg", img)
     bytes_data = encoded_image.tobytes()
+    requests.get("/")
 
-    res = requests.post(
-        url="http://34.118.100.170:8000/upload_image",
-        files={"img": bytes_data},
-    ).json()["boundsboxes"]
+    # res = requests.post(
+    #     url="http://34.118.100.170:8000/upload_image",
+    #     files={"img": bytes_data},
+    # ).json()["boundsboxes"]
 
-    created_image = create_image(img, res)  # Assuming create_image is defined somewhere
+    # created_image = create_image(img, res)  # Assuming create_image is defined somewhere
 
-    return av.VideoFrame.from_ndarray(created_image, format=format)
+    # return av.VideoFrame.from_ndarray(created_image, format=format)
+    return frame
 
 
 webrtc_streamer(
