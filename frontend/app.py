@@ -8,11 +8,23 @@ from image_prediction import (
 )  # Assuming this is defined in your environment
 
 RTC_CONFIGURATION = RTCConfiguration(
-    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+    {
+        "iceServers": [
+            {"urls": "stun:stun.l.google.com:19302"},
+            {"urls": "stun:stun.l.google.com:5349"},
+            {"urls": "stun:stun1.l.google.com:3478"},
+            {"urls": "stun:stun1.l.google.com:5349"},
+            {"urls": "stun:stun2.l.google.com:19302"},
+            {"urls": "stun:stun2.l.google.com:5349"},
+            {"urls": "stun:stun3.l.google.com:3478"},
+            {"urls": "stun:stun3.l.google.com:5349"},
+            {"urls": "stun:stun4.l.google.com:19302"},
+            {"urls": "stun:stun4.l.google.com:5349"},
+        ]
+    }
 )
 
 
-# Define a class for the video processing
 class VideoProcessor(VideoProcessorBase):
     def recv(self, frame: av.VideoFrame) -> av.VideoFrame:
         # Convert the frame to an ndarray (OpenCV format)
