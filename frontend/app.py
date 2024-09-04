@@ -6,7 +6,7 @@ from image_prediction import create_image
 
 
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, RTCConfiguration
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 import av
 
 RTC_CONFIGURATION = RTCConfiguration(
@@ -38,4 +38,5 @@ webrtc_streamer(
     key="example",
     video_frame_callback=video_frame_callback,
     rtc_configuration=RTC_CONFIGURATION,
+    mode=WebRtcMode.SENDONLY,
 )
