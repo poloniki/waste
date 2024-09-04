@@ -38,5 +38,4 @@ webrtc_streamer(
     key="example",
     video_frame_callback=video_frame_callback,
     rtc_configuration=RTC_CONFIGURATION,
-    media_stream_constraints={"audio": False},
 )
