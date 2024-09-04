@@ -10,10 +10,7 @@ from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 import av
 
 RTC_CONFIGURATION = RTCConfiguration(
-    {
-        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}],
-        "iceTransportPolicy": "relay",
-    }
+    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 )
 
 
