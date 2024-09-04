@@ -1,6 +1,5 @@
+ultralytics
 streamlit
 opencv-python-headless
 streamlit_webrtc
 twilio
-opencv-python-headless
-ultralytics
