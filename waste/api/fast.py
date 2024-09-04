@@ -41,12 +41,12 @@ async def receive_image(img: UploadFile = File(...)):
         cv2_img,
         device="cuda:0",
         imgsz=IMG_SIZE,
-        conf=0.5,
-        vid_stride=5,
-        augment=True,
+        conf=0.1,
+        vid_stride=10,
+        # augment=True,
         stream_buffer=True,
-        agnostic_nms=True,
-        retina_masks=True,
+        # agnostic_nms=True,
+        # retina_masks=True,
     )
 
     for box in prediction[0].boxes:
